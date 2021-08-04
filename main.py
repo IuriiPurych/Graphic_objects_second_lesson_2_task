@@ -1,16 +1,34 @@
-# This is a sample Python script.
+class Rectangle:
+    x = int
+    y = int
+    height_rectangle = int
+    length_rectangle = int
 
-# Press ⇧F10 to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+    def __init__(self, x, y, height, length):
+        self.x = x
+        self.y = y
+        self.height_rectangle = height
+        self.length_rectangle = length
+
+    def draw_rectangle(self):
+        print(f'The rectangle with height: {self.height_rectangle} and length: {self.length_rectangle} was drawn.')
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+class Button(Rectangle):
+    text = str
+
+    def __init__(self, x, y, height, length, text='button'):
+        Rectangle.__init__(self, x, y, height, length)
+        self.text = text
+
+    def draw_button(self):
+        Rectangle.draw_rectangle(self)
+        print(f'{self.text}')
+
+    def on_click(self):
+        print(f'The button: {self.text} was clicked.')
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+b = Button(1, 2, 5, 10, 'Кнопка')
+b.draw_button()
+b.on_click()
